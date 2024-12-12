@@ -1,0 +1,13 @@
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+dependencies {
+    // `user-api`만의 고유 의존성이 있다면 여기에 추가
+}
