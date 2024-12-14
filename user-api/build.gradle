@@ -4,10 +4,30 @@ java {
     }
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
 dependencies {
     // `user-api`만의 고유 의존성이 있다면 여기에 추가
+    compileOnly 'org.projectlombok:lombok:1.18.28'
+    annotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+    implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+    implementation 'io.springfox:springfox-boot-starter:3.0.0'
+}
+
+/**
+ * https://spring.io/projects/spring-cloud 의 Release Trains 부분을 보세요.
+ * 자신의 스프링부트에 맞는 버전을 쓰기
+ */
+ext {
+    springCloudVersion = "2024.0.0"
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+
+tasks.named('test') {
+    useJUnitPlatform()
 }

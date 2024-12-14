@@ -1,2 +1,2 @@
-rrrootProject.name = 'e-commerce'
+rootProject.name = 'e-commerce'
 include 'user-api'
