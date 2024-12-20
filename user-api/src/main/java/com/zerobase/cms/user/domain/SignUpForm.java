@@ -1,5 +1,6 @@
 package com.zerobase.cms.user.domain;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +15,7 @@ public class SignUpForm {
 	private String email;
 	private String name;
 	private String password;
-	private LocalDateTime birth;
+	private LocalDate birth;
 	private String phone;
 
 

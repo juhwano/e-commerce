@@ -6,16 +6,19 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Locale;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.envers.AuditOverride;
 
 @Entity // DB 테이블 연결
 @Getter
+@Setter
 @Builder // 객체 생성시 편리하게 값 설정 가능
 @NoArgsConstructor
 @AllArgsConstructor
@@ -34,7 +37,7 @@ public class  Customer extends BaseEntity {
 	private String password;
 	// TODO: phone validation 생각해보기
 	private String phone;
-	private LocalDateTime birth;
+	private LocalDate birth;
 
 	private LocalDateTime verifyExpiredAt;
 	private String verificationCode;
