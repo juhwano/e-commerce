@@ -3,7 +3,6 @@ java {
         languageVersion = JavaLanguageVersion.of(17)
     }
 }
-
 /**
  * https://spring.io/projects/spring-cloud 의 Release Trains 부분을 보세요.
  * 자신의 스프링부트에 맞는 버전을 쓰기
@@ -11,7 +10,6 @@ java {
 ext {
     springCloudVersion = "2024.0.0"
 }
-
 
 dependencies {
     implementation project(':zerobase-domain')
@@ -22,10 +20,47 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
     implementation 'io.springfox:springfox-boot-starter:3.0.0'
     implementation 'org.springframework.data:spring-data-envers'
+    // springdoc-openapi 라이브러리 등록
+    implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.2'
 
     implementation 'org.apache.commons:commons-lang3:3.12.0'
+/**
+ * https://spring.io/projects/spring-cloud 의 Release Trains 부분을 보세요.
+ * 자신의 스프링부트에 맞는 버전을 쓰기
+ */
+    ext {
+        springCloudVersion = "2024.0.0"
+    }
 
-    // MySQL 의존성 추가
+    dependencies {
+        implementation project(':zerobase-domain')
+        // `user-api`만의 고유 의존성이 있다면 여기에 추가
+        compileOnly 'org.projectlombok:lombok:1.18.28'
+        annotationProcessor 'org.projectlombok:lombok:1.18.28'
+
+        implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
+        implementation 'io.springfox:springfox-boot-starter:3.0.0'
+        implementation 'org.springframework.data:spring-data-envers'
+
+        implementation 'org.apache.commons:commons-lang3:3.12.0'
+
+        implementation 'com.mysql:mysql-connector-j'
+        testImplementation 'com.mysql:mysql-connector-j'
+
+        testImplementation 'com.h2database:h2'
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+        }
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+
+
     implementation 'com.mysql:mysql-connector-j'
     testImplementation 'com.mysql:mysql-connector-j'
 

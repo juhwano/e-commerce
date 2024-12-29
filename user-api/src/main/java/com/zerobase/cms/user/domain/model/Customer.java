@@ -29,7 +29,6 @@ public class  Customer extends BaseEntity {
 	@Column(name="id", nullable=false)
 	@GeneratedValue(strategy= GenerationType.IDENTITY) // 자동 생성
 	private Long id;
-
 	@Column(unique = true) // 중복 방지
 	private String email;
 	private String name;
@@ -38,12 +37,10 @@ public class  Customer extends BaseEntity {
 	// TODO: phone validation 생각해보기
 	private String phone;
 	private LocalDate birth;
-
 	private LocalDateTime verifyExpiredAt;
 	private String verificationCode;
 	private boolean verify;
-
-	// static 메서드 장점: 코드 간결성, 단점: 오사용
+	// static 메서드 장점: 코드 간결성, 단점: 잘못사용
 	// Customer 객체 생성
 	public static Customer from(SignUpForm form){
 		return Customer.builder()
